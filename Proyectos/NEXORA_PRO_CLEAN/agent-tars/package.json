@@ -1,0 +1,12 @@
+{
+  "name": "nexora-pro-neon-vercel",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev -p 49732"
+  },
+  "dependencies": {
+    "next": "14.2.31",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}

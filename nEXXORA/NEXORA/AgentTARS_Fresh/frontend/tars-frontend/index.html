@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TARS • Ingeniero en Jefe</title>
+  <!-- React y ReactDOM desde CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel para compilar JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root {
+      --bg: #090d15;
+      --card-bg: #131a2a;
+      --border: #2c3b58;
+      --accent: #6a9bff;
+      --accent-glow: rgba(106, 155, 255, 0.35);
+      --text: #e8f2ff;
+      --text-secondary: #b8d0e8;
+      --input-bg: #1a2234;
+      --input-focus: #2a3a5a;
+      --panel-bg: #151d2f;
+      --panel-border: #3a4d6a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 34px;
+      background: linear-gradient(90deg, #6a9bff, #00e0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 14px var(--accent-glow);
+    }
+    .chat-container {
+      max-width: 840px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .message {
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.35s ease;
+      line-height: 1.6;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    .user { border-left: 4px solid #00e0ff; }
+    .assistant { border-left: 4px solid #6a9bff; }
+    .input-area {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+      align-items: flex-start;
+    }
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .tab-btn {
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      background: var(--input-bg);
+      color: var(--text);
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: white;
+    }
+    .right-panel {
+      width: 300px;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .panel-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .panel-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .voice-item {
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      background: var(--input-bg);
+      transition: background 0.2s;
+    }
+    .voice-item:hover {
+      background: var(--input-focus);
+    }
+    .voice-item.selected {
+      background: var(--accent);
+      color: white;
+    }
+    .avatar-item {
+      width: 60px;
+      height: 60px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--input-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .avatar-item.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+    .record-btn {
+      background: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .record-btn:hover {
+      background: #ff8800;
+    }
+    textarea {
+      flex: 1;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: var(--text);
+      resize: none;
+      min-height: 160px;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+    textarea:focus {
+      background: var(--input-focus);
+      outline: none;
+      border-color: var(--accent);
+    }
+    button {
+      background: linear-gradient(135deg, #6a9bff, #0077cc);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      padding: 0 28px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+    button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px var(--accent-glow);
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    .system { border-left: 4px solid #ffbb00; color: #ffdd80; }
+  </style>
+</head>
+<body>
+  <header><h1>• TARS •</h1></header>
+  <div class="chat-container" id="chat"></div>
+  <div class="input-area">
+    <div class="tab-bar">
+      <div class="tab-btn" onclick="setTab('general')" id="btn-general">General</div>
+      <div class="tab-btn" onclick="setTab('avatares')" id="btn-avatares">🖼️ Avatares</div>
+      <div class="tab-btn" onclick="setTab('voces')" id="btn-voces">🎤 Voces</div>
+      <div class="tab-btn" onclick="setTab('dictado')" id="btn-dictado">🎙️ Dictado</div>
+    </div>
+    <textarea id="prompt" placeholder="Ej: crear landing: SaaS de IA para ingenieros"></textarea>
+    <button onclick="send()">Enviar</button>
+    <div class="right-panel">
+      <div class="panel-section">
+        <div class="panel-title">🗣️ Voces Disponibles</div>
+        <div id="voices-list">
+          <div class="voice-item" onclick="selectVoice(this)">Clonada (Tu Voz)</div>
+          <div class="voice-item" onclick="selectVoice(this)">Ingeniero Técnico</div>
+          <div class="voice-item" onclick="selectVoice(this)">Asistente Virtual</div>
+          <div class="voice-item" onclick="selectVoice(this)">Narrador Profesional</div>
+        </div>
+      </div>
+      <div class="panel-section">
+        <div class="panel-title">🖼️ Avatares Disponibles</div>
+        <div id="avatars-list">
+          <div class="avatar-item" onclick="selectAvatar(this)">A1</div>
+          <div class="avatar-item" onclick="selectAvatar(this)">A2</div>
+          <div class="avatar-item" onclick="selectAvatar(this)">A3</div>
+          <div class="avatar-item" onclick="selectAvatar(this)">A4</div>
+        </div>
+      </div>
+      <div class="panel-section">
+        <div class="panel-title">🎙️ Grabar Voz</div>
+        <button class="record-btn" onclick="grabarVoz()">Grabar 30 segundos</button>
+      </div>
+      <div class="panel-section">
+        <div class="panel-title">🔊 Reproducir Respuesta</div>
+        <button onclick="playResponse()">Reproducir</button>
+      </div>
+    </div>
+  </div>
+  <footer>Ingeniero en Jefe • 25 capacidades • 100% offline</footer>
+
+  <script type="text/babel">
+    const chat = document.getElementById("chat");
+    const promptBox = document.getElementById("prompt");
+
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = "message " + sender;
+      div.textContent = text;
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    async function send() {
+      const text = promptBox.value.trim();
+      if (!text) return;
+      addMessage(text, "user");
+      promptBox.value = "";
+      try {
+        const res = await fetch("http://127.0.0.1:8000/interpret", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await res.json();
+        addMessage(data.message || "Sin respuesta", "assistant");
+      } catch (e) {
+        addMessage("❌ TARS no responde. Usa 'reparar tars'.", "system");
+      }
+    }
+
+    promptBox.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        send();
+      }
+    });
+
+    // Cambiar pestaña
+    function setTab(tab) {
+      document.getElementById("btn-general").classList.toggle("active", tab === "general");
+      document.getElementById("btn-avatares").classList.toggle("active", tab === "avatares");
+      document.getElementById("btn-voces").classList.toggle("active", tab === "voces");
+      document.getElementById("btn-dictado").classList.toggle("active", tab === "dictado");
+
+      if (tab === "avatares") {
+        promptBox.placeholder = "Ej: generar avatar: ingeniero técnico, fondo oscuro";
+      } else if (tab === "voces") {
+        promptBox.placeholder = "Ej: clonar voz: graba 30 segundos de tu voz";
+      } else if (tab === "dictado") {
+        promptBox.placeholder = "Ej: iniciar dictado";
+      } else {
+        promptBox.placeholder = "Ej: crear landing: SaaS de IA para ingenieros";
+      }
+    }
+
+    // Seleccionar voz
+    let selectedVoice = null;
+    function selectVoice(element) {
+      document.querySelectorAll(".voice-item").forEach(el => el.classList.remove("selected"));
+      element.classList.add("selected");
+      selectedVoice = element.innerText;
+    }
+
+    // Seleccionar avatar
+    let selectedAvatar = null;
+    function selectAvatar(element) {
+      document.querySelectorAll(".avatar-item").forEach(el => el.classList.remove("selected"));
+      element.classList.add("selected");
+      selectedAvatar = element.innerText;
+    }
+
+    // Grabar voz
+    function grabarVoz() {
+      addMessage("🎙️ Grabando... Por favor habla durante 30 segundos.", "system");
+      // Simulación: en producción, usaría la API de grabación
+      setTimeout(() => {
+        addMessage("✅ Grabación completada. Tu voz está lista para usar.", "system");
+      }, 30000);
+    }
+
+    // Reproducir respuesta
+    function playResponse() {
+      addMessage("🔊 Reproduciendo respuesta...", "system");
+      // Simulación: en producción, usaría la API de TTS
+      const audio = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=");
+      audio.play().catch(e => addMessage("❌ Error al reproducir audio.", "system"));
+    }
+
+    setTimeout(() => addMessage("Hola. Soy TARS. Modo: Ingeniero en Jefe activado.", "assistant"), 500);
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+1) Abre Neon, crea proyecto y copia el connection string (con sslmode=require).
+2) En el SQL Editor de Neon, pega database/schema.sql y ejecútalo.
+3) Copia .env.example -> .env y pega tu NEON_DATABASE_URL (y JWT_SECRET).
+4) npm install
+5) npm run seed
+6) npm run dev  -> http://localhost:3000/es

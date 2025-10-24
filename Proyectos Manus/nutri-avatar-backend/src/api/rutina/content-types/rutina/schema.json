@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rutinas",
+  "info": {
+    "singularName": "rutina",
+    "pluralName": "rutinas",
+    "displayName": "Rutina"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "descripcion": {
+      "type": "blocks"
+    },
+    "dificultad": {
+      "type": "string"
+    }
+  }
+}

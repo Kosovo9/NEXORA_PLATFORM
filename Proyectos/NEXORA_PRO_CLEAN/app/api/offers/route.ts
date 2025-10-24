@@ -1,0 +1,1 @@
+import { getSql } from '@/lib/db'; export const runtime='nodejs'; export async function GET(){ const sql=getSql(); const rows=await sql`SELECT * FROM offers WHERE active=true ORDER BY created_at DESC`; return Response.json(rows); }

@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Veterinarias — PetMatch Global</title>
+  <link rel="stylesheet" href="/assets/theme.css"/>
+  <script src="/assets/i18n.js" defer></script>
+</head>
+<body>
+<header><div class="brand"><div class="brand-logo"></div><div class="brand-name">PetMatch Global</div></div>
+<div class="lang-switch"><button class="btn btn-ghost" onclick="setLang('es')">ES</button><button class="btn btn-ghost" onclick="setLang('en')">EN</button></div></header>
+<section class="hero"><div class="globe-wrap"><div class="globe"></div></div>
+<div class="container">
+  <h1>Veterinarias — Página Blanca</h1>
+  <p class="small">Usa este layout para publicar tus servicios (renta/venta), paquetes, horarios, zonas y precios.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Servicios</h3>
+      <ul><li>Consulta / Sesión</li><li>Paquete mensual</li><li>Urgencias / On-Call</li></ul>
+      <button class="btn btn-primary" onclick="startCheckout()">Reservar / Pagar</button>
+    </div>
+    <div class="card">
+      <h3>Contacto</h3>
+      <form name="provider-lead" data-netlify="true">
+        <input type="hidden" name="form-name" value="provider-lead"/>
+        <input name="name" placeholder="Nombre / Name" />
+        <input name="email" type="email" placeholder="Email" required />
+        <input name="city" placeholder="Ciudad / City" />
+        <button class="btn">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
+<footer class="footer"><div class="container small" data-i18n="disclaimer">Aviso...</div></footer>
+<script>
+async function startCheckout(){
+  const r = await fetch('/checkout', { method:'POST' });
+  const data = await r.json(); location.href = data.url;
+}
+</script>
+</body></html>

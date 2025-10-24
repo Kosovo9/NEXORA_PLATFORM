@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abrazo & Foto Pro — Restauración y Videos Emotivos</title>
+  <meta name="description" content="Restaura tus fotos familiares y transforma una foto en un video realista de abrazo en minutos. Entregas express. Paquetes desde $200 MXN." />
+  <meta property="og:title" content="Abrazo & Foto Pro — Restauración y Videos Emotivos" />
+  <meta property="og:description" content="Restaura tus fotos familiares y transforma una foto en un video realista de abrazo en minutos. Paquetes desde $200 MXN." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0e2a47" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container row">
+      <div class="brand">
+        <img src="./assets/logo.svg" alt="Logo" class="logo" />
+        <span>Abrazo & Foto Pro</span>
+      </div>
+      <nav class="nav">
+        <a href="#servicios" data-i18n="nav_services">Servicios</a>
+        <a href="#portafolio" data-i18n="nav_portfolio">Portafolio</a>
+        <a href="#precios" data-i18n="nav_pricing">Precios</a>
+        <a href="#flujo" data-i18n="nav_how">Cómo funciona</a>
+        <a href="#faqs" data-i18n="nav_faqs">FAQs</a>
+      </nav>
+      <div class="lang">
+        <button id="switch-es" class="pill active">ES</button>
+        <button id="switch-en" class="pill">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container grid2">
+      <div>
+        <h1 data-i18n="hero_title">Restaura tus memorias y crea un abrazo en video a partir de una foto</h1>
+        <p class="lead" data-i18n="hero_sub">
+          Entregas express (30–90 min). Paquetes desde <b>$200 MXN</b>. Atención por WhatsApp.
+        </p>
+        <div class="cta">
+          <a class="btn primary" id="cta-whatsapp" target="_blank" rel="noopener"
+             data-i18n="cta_whatsapp" href="https://wa.me/521234567890?text=Hola%20quiero%20restaurar%20una%20foto%20o%20crear%20un%20video%20de%20abrazo">
+            Iniciar por WhatsApp
+          </a>
+          <a class="btn ghost" href="#precios" data-i18n="cta_pricing">Ver precios</a>
+        </div>
+        <ul class="badges">
+          <li data-i18n="badge_fast">Entrega hoy mismo</li>
+          <li data-i18n="badge_secure">Proceso seguro y privado</li>
+          <li data-i18n="badge_revisions">1 revisión incluida</li>
+        </ul>
+      </div>
+      <div class="card glass">
+        <img class="hero-img" src="./assets/sample_hero.jpg" alt="Ejemplo de restauración y video de abrazo" />
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="container">
+    <h2 data-i18n="svc_title">Servicios express</h2>
+    <div class="grid3">
+      <div class="card">
+        <h3 data-i18n="svc_hug">Video de abrazo desde una foto</h3>
+        <p data-i18n="svc_hug_desc">Usamos IA avanzada para convertir una foto en un video realista donde dos personas se levantan y se abrazan, sin perder rasgos faciales.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="svc_restore">Restauración de fotos</h3>
+        <p data-i18n="svc_restore_desc">Reparación de rayones, ruido y color. Recuperamos detalles sin “plastificar” la piel; preservamos identidades y texturas.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="svc_effects">Efectos y mejora pro</h3>
+        <p data-i18n="svc_effects_desc">Color grading, fondo limpio, recorte para marcos/impresión y versiones optimizadas para marketplace y redes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portafolio" class="container">
+    <h2 data-i18n="port_title">Portafolio (antes / después)</h2>
+    <div class="masonry">
+      <figure><img src="./assets/before1.jpg" alt="Antes 1"><figcaption>Antes</figcaption></figure>
+      <figure><img src="./assets/after1.jpg" alt="Después 1"><figcaption>Después</figcaption></figure>
+      <figure><img src="./assets/before2.jpg" alt="Antes 2"><figcaption>Antes</figcaption></figure>
+      <figure><img src="./assets/after2.jpg" alt="Después 2"><figcaption>Después</figcaption></figure>
+    </div>
+    <p class="note" data-i18n="port_note">*Ejemplos demostrativos. Puedes enviar tu foto por WhatsApp para cotizar en minutos.</p>
+  </section>
+
+  <section id="precios" class="container">
+    <h2 data-i18n="pricing_title">Paquetes y precios</h2>
+    <div class="grid3">
+      <div class="card price">
+        <h3 data-i18n="p1_title">Básico</h3>
+        <div class="num">$200 MXN</div>
+        <ul>
+          <li data-i18n="p1_1">1 foto restaurada (web + impresión)</li>
+          <li data-i18n="p1_2">Entrega en 60–90 min</li>
+          <li data-i18n="p1_3">1 revisión ligera</li>
+        </ul>
+        <a class="btn primary" target="_blank" rel="noopener" id="buy-p1" data-i18n="buy_now"
+           href="https://wa.me/521234567890?text=Quiero%20el%20paquete%20B%C3%A1sico%20$200">
+          Comprar ahora
+        </a>
+      </div>
+      <div class="card price featured">
+        <h3 data-i18n="p2_title">Pro</h3>
+        <div class="num">$500 MXN</div>
+        <ul>
+          <li data-i18n="p2_1">1 foto restaurada + 1 video abrazo (6–8s)</li>
+          <li data-i18n="p2_2">Optimizado para Facebook Marketplace</li>
+          <li data-i18n="p2_3">Entrega en 45–75 min</li>
+        </ul>
+        <a class="btn primary" target="_blank" rel="noopener" id="buy-p2" data-i18n="buy_now"
+           href="https://wa.me/521234567890?text=Quiero%20el%20paquete%20Pro%20$500">
+          Comprar ahora
+        </a>
+      </div>
+      <div class="card price">
+        <h3 data-i18n="p3_title">Premium</h3>
+        <div class="num">$1000 MXN</div>
+        <ul>
+          <li data-i18n="p3_1">Hasta 3 fotos + 1 video abrazo</li>
+          <li data-i18n="p3_2">Colorización avanzada y retoque fino</li>
+          <li data-i18n="p3_3">Entrega en 2–4 horas</li>
+        </ul>
+        <a class="btn primary" target="_blank" rel="noopener" id="buy-p3" data-i18n="buy_now"
+           href="https://wa.me/521234567890?text=Quiero%20el%20paquete%20Premium%20$1000">
+          Comprar ahora
+        </a>
+      </div>
+    </div>
+    <div class="pay-hint">
+      <p data-i18n="pay_hint">
+        Métodos de pago: Transferencia SPEI, OXXO Pay, Mercado Pago. Pide tu link seguro por WhatsApp.
+      </p>
+    </div>
+  </section>
+
+  <section id="flujo" class="container">
+    <h2 data-i18n="flow_title">Cómo funciona</h2>
+    <ol class="steps">
+      <li data-i18n="flow_1"><b>Envío de foto</b>: comparte tu imagen por WhatsApp y elige paquete.</li>
+      <li data-i18n="flow_2"><b>Validación</b>: confirmamos alcance y tiempos; pago seguro.</li>
+      <li data-i18n="flow_3"><b>Producción</b>: restauramos y/o generamos el video abrazo con IA.</li>
+      <li data-i18n="flow_4"><b>Entrega</b>: te enviamos archivos finales + 1 revisión ligera.</li>
+    </ol>
+  </section>
+
+  <section id="faqs" class="container">
+    <h2>FAQs</h2>
+    <details>
+      <summary data-i18n="faq1_q">¿Se conservan los rasgos faciales?</summary>
+      <p data-i18n="faq1_a">Sí. Priorizamos identidad 1:1 (edad, facciones, cabello, tono de piel). Sin “plastificar”.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq2_q">¿Puedo pedir cambios?</summary>
+      <p data-i18n="faq2_a">Incluye 1 revisión menor (color/detalle). Cambios estructurales mayores cotizan aparte.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq3_q">¿Qué formato entregan?</summary>
+      <p data-i18n="faq3_a">JPG/PNG en alta y MP4 1080p o 4K (según paquete). Versiones para redes y para impresión.</p>
+    </details>
+  </section>
+
+  <section class="container ctas">
+    <a class="btn primary big" target="_blank" rel="noopener" id="cta-bottom" 
+       href="https://wa.me/521234567890?text=Hola%20quiero%20empezar%20mi%20pedido">
+       Iniciar mi pedido por WhatsApp
+    </a>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="disclaimer">
+        *Solo trabajamos con fotos de tu propiedad o con permiso del titular. No hacemos deepfakes ni suplantaciones.
+      </p>
+      <p class="tiny">
+        © 2025 Abrazo & Foto Pro • <a href="#" id="mail-link">hola@tusitio.mx</a> • Chihuahua, MX
+      </p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

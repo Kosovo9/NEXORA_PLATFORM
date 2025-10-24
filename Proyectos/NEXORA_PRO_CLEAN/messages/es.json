@@ -1,0 +1,15 @@
+{
+  "nav_offers": "Ofertas",
+  "nav_admin": "Admin",
+  "nav_signin": "Iniciar sesi\u00f3n",
+  "home_title": "Plataforma de Afiliados, simple.",
+  "home_subtitle": "Crea ofertas, comparte links, trackea clics y conversiones.",
+  "cta_view_offers": "Ver ofertas",
+  "cta_signin": "Iniciar sesi\u00f3n",
+  "feat_payments": "Pagos (Stripe)",
+  "feat_payments_desc": "Checkout y webhook listos.",
+  "feat_tracking": "Tracking",
+  "feat_tracking_desc": "Widget de clics y API de conversiones.",
+  "feat_i18n": "15 idiomas",
+  "feat_i18n_desc": "Rutas con locale y mensajes."
+}

@@ -1,0 +1,13 @@
+{
+  "name": "nexora-avatar-worker",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "devDependencies": {
+    "wrangler": "^3.80.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}

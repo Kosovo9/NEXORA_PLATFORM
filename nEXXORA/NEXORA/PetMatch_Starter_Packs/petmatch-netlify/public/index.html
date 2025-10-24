@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PetMatch Global — Netlify</title>
+  <link rel="stylesheet" href="/assets/theme.css"/>
+  <script src="/assets/i18n.js" defer></script>
+  <script src="/assets/helpdesk.js" defer></script>
+  <script>
+    window.HELPDESK_ENDPOINT='/.netlify/functions/chat';
+    window.HELPDESK_PROVIDER='hf'; /* hf | deepseek | qwen */
+  </script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <div class="brand-name">PetMatch Global</div>
+      <span class="badge">Netlify</span>
+    </div>
+    <div class="lang-switch">
+      <button class="btn btn-ghost" onclick="setLang('es')">ES</button>
+      <button class="btn btn-ghost" onclick="setLang('en')">EN</button>
+      <a class="btn" href="/sales.html" data-i18n="sales">Ventas</a>
+      <a class="btn" href="/rentals.html" data-i18n="rentals">Rentas</a>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="globe-wrap"><div class="globe"></div></div>
+    <div class="container">
+      <h1 data-i18n="hero_title">Viaja, cuida y equipa a tu mascota — globalmente y sin fricción.</h1>
+      <p data-i18n="hero_sub">Guías a la medida, políticas de viaje pet‑friendly, helpdesk con IA, nutrición y proveedores verificados. UI azul metálico premium by Nexora.</p>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <button class="btn btn-primary" id="buy" data-i18n="cta_buy">Comprar Kit Pro US$29</button>
+        <a class="btn" href="/providers.html" data-i18n="providers">Proveedores</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="card">
+        <h3 data-i18n="section_sell_title">Vende tus servicios (Páginas en blanco)</h3>
+        <p class="small" data-i18n="section_sell_sub">Veterinarias, nutriólogos, entrenadores y más. Renta o vende planes a nivel global.</p>
+        <div class="grid">
+          <a class="card" href="/providers/vets.html">Veterinarias</a>
+          <a class="card" href="/providers/nutritionists.html">Nutriólogos</a>
+          <a class="card" href="/providers/trainers.html">Entrenadores</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div data-i18n="disclaimer">Aviso: La información se entrega 'tal cual'. Las políticas de viaje y el consejo médico/alimentario pueden cambiar. Verifica con fuentes oficiales y profesionales certificados.</div>
+      <div data-i18n="footer_rights">© 2025 PetMatch Global por Nexora Pro. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+  <div class="helpdesk">
+    <button class="btn btn-primary" onclick="openHelpdesk()">Helpdesk 24/7 AI</button>
+  </div>
+  <div class="helpdesk-panel" id="helpdesk-panel">
+    <header><div class="brand"><div class="brand-logo"></div><div>AI Helpdesk</div></div>
+      <button class="btn btn-ghost" onclick="closeHelpdesk()">×</button></header>
+    <div class="helpdesk-messages" id="helpdesk-messages">
+      <div class="msg ai">Hola, soy tu asistente IA (Hugging Face / DeepSeek / Qwen). ¿En qué ayudo?</div>
+    </div>
+    <div class="helpdesk-input">
+      <input id="helpdesk-input" placeholder="Escribe tu consulta..." />
+      <button class="btn btn-primary" onclick="sendMsg()">Enviar</button>
+    </div>
+  </div>
+  <script>
+  document.getElementById('buy').onclick = async () => {
+    const r = await fetch('/.netlify/functions/checkout', { method: 'POST' });
+    const { url } = await r.json(); location.href = url;
+  };
+  </script>
+</body>
+</html>

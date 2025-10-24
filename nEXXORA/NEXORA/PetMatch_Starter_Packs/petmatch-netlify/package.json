@@ -1,0 +1,8 @@
+{
+  "name": "petmatch-netlify",
+  "private": true,
+  "dependencies": {
+    "stripe": "^16.0.0",
+    "node-fetch": "^3.3.2"
+  }
+}

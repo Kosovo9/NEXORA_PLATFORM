@@ -1,0 +1,5 @@
+name = "petmatch-cf"
+compatibility_date = "2025-10-23"
+[vars]
+SUCCESS_URL = "https://example.com/success"
+CANCEL_URL  = "https://example.com/cancel"

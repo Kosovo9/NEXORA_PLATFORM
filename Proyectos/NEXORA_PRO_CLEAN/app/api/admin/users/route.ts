@@ -1,0 +1,1 @@
+import { getSession } from '@/lib/auth'; import { getSql } from '@/lib/db'; export const runtime='nodejs'; export async function GET(){ const s=await getSession(); if(!s||s.role!=='admin') return new Response('forbidden',{status:403}); const sql=getSql(); const rows=await sql`SELECT id,email,role,name,created_at FROM users ORDER BY created_at DESC`; return Response.json(rows); }

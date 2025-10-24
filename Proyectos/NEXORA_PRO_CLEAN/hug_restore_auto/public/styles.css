@@ -1,0 +1,13 @@
+﻿:root { --bg:#0a1624; --card:#0f1e33; --brand:#2a5f9b; --txt:#e6edf6; }
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.45 system-ui,Segoe UI,Inter,Roboto}
+.wrap{width:min(1100px,92%);margin:0 auto}
+.topbar{background:#0e2a47;border-bottom:1px solid #113458;padding:14px 0}
+.panel{background:var(--card);border:1px solid #15385f;border-radius:16px;padding:18px;margin:16px 0}
+.dropzone{display:grid;place-items:center;height:120px;border:2px dashed #2a5f9b;border-radius:12px;color:#cfe4ff;cursor:pointer}
+.preview{max-width:100%;margin-top:10px;border-radius:10px;border:1px solid #15385f}
+.grid5{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(min-width:900px){.grid5{grid-template-columns:repeat(5,1fr)}}
+.actions{display:flex;align-items:center;gap:10px;margin-top:14px}
+button{background:var(--brand);border:1px solid #3b7ad1;color:#fff;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+.resultBox{margin:14px 0;padding:12px;background:#0b1b2f;border:1px solid #15385f;border-radius:12px;min-height:80px}
+.tiny{opacity:.8;font-size:12px;padding:20px 0}

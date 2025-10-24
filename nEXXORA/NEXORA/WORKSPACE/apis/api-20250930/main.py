@@ -1,0 +1,1 @@
+Error: Command '['ollama', 'run', 'llama3']' timed out after 120 seconds

@@ -1,0 +1,6 @@
+# Dentro de do_POST, antes de llamar a Ollama:
+if "GUARDAR EN WORKSPACE:" in user_message:
+    contenido = user_message.replace("GUARDAR EN WORKSPACE:", "").strip()
+    response_text = acciones.guardar_en_workspace(contenido)
+else:
+    # ... (el código normal de Ollama)
