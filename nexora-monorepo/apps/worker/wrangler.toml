@@ -1,0 +1,8 @@
+
+name = "nexora-avatar-worker"
+main = "src/index.ts"
+compatibility_date = "2024-11-12"
+
+[vars]
+ALLOWED_ORIGIN = "http://localhost:5173"
+HF_SPACE_BASE = "https://<your-space>.hf.space"

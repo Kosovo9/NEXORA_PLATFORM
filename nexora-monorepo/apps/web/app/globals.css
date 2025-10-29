@@ -1,0 +1,7 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root{ color-scheme: dark; }
+body{ font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial; background:#0b0b12; color:white; }
+.input{ width:100%; border-radius:16px; border:1px solid #ffffff1a; background:#ffffff0d; padding:8px 12px; outline:none; }
+.btn{ display:inline-flex; align-items:center; justify-content:center; border-radius:16px; padding:8px 14px; border:1px solid #ffffff1a; background:#ffffff12; }
+.card{ border-radius:16px; border:1px solid #ffffff1a; padding:12px; background:#ffffff0d; }
+.table{ width:100%; font-size:14px; }

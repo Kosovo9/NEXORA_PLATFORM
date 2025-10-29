@@ -1,0 +1,4 @@
+// --- ADD to your frontend/src/App.tsx ---
+import { RtcPlayer } from './components/RtcPlayer'
+// En el panel izquierdo, debajo del <Avatar />:
+<RtcPlayer />
