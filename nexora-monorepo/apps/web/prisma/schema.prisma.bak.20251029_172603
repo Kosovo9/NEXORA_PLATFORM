@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum JobStatus { queued processing done error }
+enum JobType { image video }
+
+model Job {
+  id             String    @id @default(cuid())
+  type           JobType
+  prompt         String
+  negativePrompt String?   @db.Text
+  refImage       String?
+  preset         String?
+  style          String?
+  camera         String?
+  socialTargets  String[]  @default([])
+  aspect         String?
+  grade          String?   @default("none")
+  params         Json?
+  width          Int?
+  height         Int?
+  fps            Int?
+  frames         Int?
+  seed           Int?
+  status         JobStatus @default(queued)
+  error          String?
+  resultUrl      String?
+  resultUrls     String[]  @default([])
+  createdAt      DateTime  @default(now())
+  startedAt      DateTime?
+  updatedAt      DateTime  @updatedAt
+  results        JobResult[]
+}
+
+model JobResult {
+  id        String   @id @default(cuid())
+  job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  jobId     String
+  url       String
+  createdAt DateTime @default(now())
+}

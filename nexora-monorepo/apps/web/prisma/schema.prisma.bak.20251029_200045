@@ -48,11 +48,9 @@ model Job {
 }
 
 model JobResult {
-  id          String   @id @default(cuid())
-  jobId       String
-  job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  url         String?
-  contentType String?
-  data        Bytes?
-  createdAt   DateTime @default(now())
+  id        String   @id @default(cuid())
+  jobId     String
+  job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  url       String
+  createdAt DateTime @default(now())
 }

@@ -1,17 +1,18 @@
 {
   "name": "nexora-platform",
   "version": "1.0.0",
-  "description": "NEXORA Platform - Unified Monorepo",
   "private": true,
+  "description": "NEXORA Platform - Unified Monorepo",
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "install:ci": "pnpm install --frozen-lockfile",
-    "verify": "pnpm run install:ci && pnpm run lint && pnpm run typecheck",
+    "verify": "pnpm run lint && pnpm run typecheck",
     "lint": "pnpm run --recursive lint",
     "typecheck": "pnpm run --recursive typecheck",
     "build": "pnpm run --recursive build",
     "dev": "pnpm run --recursive --parallel dev",
     "test": "pnpm run --recursive test",
-    "clean": "pnpm run --recursive clean && rm -rf node_modules",
+    "clean": "pnpm run --recursive clean && rimraf node_modules",
     "predeploy": "pnpm run verify && pnpm run build",
     "deploy:preview": "vercel deploy --yes",
     "deploy": "vercel deploy --prod --yes"
@@ -21,11 +22,11 @@
     "typescript": "^5.0.0",
     "turbo": "^1.10.0",
     "prettier": "^3.0.0",
-    "eslint": "^8.0.0"
+    "eslint": "^8.0.0",
+    "rimraf": "^5.0.0"
   },
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=8.0.0"
-  },
-  "packageManager": "pnpm@8.15.0"
+  }
 }
