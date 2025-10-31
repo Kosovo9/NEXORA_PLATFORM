@@ -5,7 +5,6 @@ export const i18n = {
 
 export type Locale = typeof i18n.locales[number];
 
-// Helper: detectar locale aproximado desde headers (fallback seguro)
 export function detectLocaleFromHeaders(headers: Headers): Locale {
   const accept = headers.get("accept-language") || "";
   const first = accept.split(",")[0]?.split("-")[0]?.toLowerCase() || i18n.defaultLocale;

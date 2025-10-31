@@ -6,53 +6,53 @@ export const runtime = "nodejs";
 const prisma = new PrismaClient();
 
 export async function GET(
-  request: NextRequest,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
     const { id } = params;
 
-    const result = await prisma.jobResult.findUnique({
-      where: { id }
+    // Find JobResult by id
+    const r = await prisma.jobResult.findUnique({
+      where: { id },
     });
 
-    if (!result) {
+    if (!r) {
       return new NextResponse("not found", { status: 404 });
     }
 
-    // Si hay URL externa almacenada, intentamos hacer proxy/stream
-    if (result.url) {
+    // If r.url exists, stream from upstream
+    if (r.url) {
       try {
-        const upstream = await fetch(result.url);
+        const upstream = await fetch(r.url);
         if (upstream.ok && upstream.body) {
           return new NextResponse(upstream.body, {
             headers: {
-              "content-type":
-                upstream.headers.get("content-type") ??
-                result.contentType ??
-                "application/octet-stream",
+              "content-type": upstream.headers.get("content-type") ?? r.contentType ?? "application/octet-stream",
               "cache-control": "public, max-age=31536000, immutable"
             }
           });
         }
-      } catch (_) {
-        // si falla upstream, caemos a DB
+      } catch (error) {
+        // Fall through to data fallback
       }
     }
 
-    // Si hay binario en DB (Bytes)
-    if (result.data) {
-      return new NextResponse(result.data, {
+    // Else if r.data exists, serve from database
+    if (r.data) {
+      return new NextResponse(r.data, {
         headers: {
-          "content-type": result.contentType ?? "application/octet-stream",
+          "content-type": r.contentType ?? "application/octet-stream",
           "cache-control": "public, max-age=31536000, immutable"
         }
       });
     }
 
-    // nada que servir
+    // No content available
     return new NextResponse("no content", { status: 404 });
-  } catch (err) {
+
+  } catch (error) {
+    console.error("Error serving file:", error);
     return new NextResponse("internal server error", { status: 500 });
   }
 }
