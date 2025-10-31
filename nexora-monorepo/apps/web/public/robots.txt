@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Sitemap: https://studio-nexora.com/sitemap.xml
