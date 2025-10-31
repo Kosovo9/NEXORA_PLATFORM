@@ -6,41 +6,38 @@ export const runtime = "nodejs";
 const prisma = new PrismaClient();
 
 export async function GET(
-  request: NextRequest,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
     const { id } = params;
-
+    
     const result = await prisma.jobResult.findUnique({
       where: { id }
     });
 
     if (!result) {
-      return new NextResponse("not found", { status: 404 });
+      return new NextResponse("Not found", { status: 404 });
     }
 
-    // Si hay URL externa almacenada, intentamos hacer proxy/stream
+    // If URL exists, fetch from upstream
     if (result.url) {
       try {
         const upstream = await fetch(result.url);
         if (upstream.ok && upstream.body) {
           return new NextResponse(upstream.body, {
             headers: {
-              "content-type":
-                upstream.headers.get("content-type") ??
-                result.contentType ??
-                "application/octet-stream",
+              "content-type": upstream.headers.get("content-type") ?? result.contentType ?? "application/octet-stream",
               "cache-control": "public, max-age=31536000, immutable"
             }
           });
         }
-      } catch (_) {
-        // si falla upstream, caemos a DB
+      } catch (error) {
+        console.error("Failed to fetch from upstream URL:", error);
       }
     }
 
-    // Si hay binario en DB (Bytes)
+    // Fallback to data field
     if (result.data) {
       return new NextResponse(result.data, {
         headers: {
@@ -50,9 +47,9 @@ export async function GET(
       });
     }
 
-    // nada que servir
-    return new NextResponse("no content", { status: 404 });
-  } catch (err) {
-    return new NextResponse("internal server error", { status: 500 });
+    return new NextResponse("No content", { status: 404 });
+  } catch (error) {
+    console.error("API route error:", error);
+    return new NextResponse("Internal server error", { status: 500 });
   }
 }
