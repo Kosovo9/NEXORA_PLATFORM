@@ -1,0 +1,89 @@
+{
+  "navigation": {
+    "home": "Home",
+    "studio": "Studio",
+    "pricing": "Pricing",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "Create Amazing Content with AI",
+    "subtitle": "Transform your ideas into stunning visuals and videos using the power of artificial intelligence. Professional results in minutes, not hours.",
+    "startCreating": "Start Creating",
+    "learnMore": "Learn More"
+  },
+  "features": {
+    "title": "Why Choose Nexora?",
+    "advancedAI": {
+      "title": "Advanced AI",
+      "description": "State-of-the-art artificial intelligence models for superior quality results."
+    },
+    "secureReliable": {
+      "title": "Secure & Reliable",
+      "description": "Enterprise-grade security with 99.9% uptime guarantee."
+    },
+    "easyToUse": {
+      "title": "Easy to Use",
+      "description": "Intuitive interface designed for creators of all skill levels."
+    }
+  },
+  "pricing": {
+    "title": "Plans & Pricing",
+    "subtitle": "Choose the perfect plan for your needs",
+    "mostPopular": "Most Popular",
+    "chooseplan": "Choose Plan",
+    "starter": {
+      "name": "Starter",
+      "price": "$9",
+      "period": "/month",
+      "description": "Perfect to get started",
+      "features": [
+        "100 AI images per month",
+        "5 short videos",
+        "HD resolution",
+        "Email support"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$29",
+      "period": "/month",
+      "description": "For professionals",
+      "features": [
+        "500 AI images per month",
+        "25 HD videos",
+        "4K resolution",
+        "API access",
+        "Priority support"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "$99",
+      "period": "/month",
+      "description": "For large teams",
+      "features": [
+        "Unlimited images",
+        "Unlimited videos",
+        "8K resolution",
+        "Full API",
+        "24/7 support",
+        "Custom integration"
+      ]
+    }
+  },
+  "footer": {
+    "product": "Product",
+    "company": "Company",
+    "support": "Support",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "blog": "Blog",
+    "careers": "Careers",
+    "help": "Help Center",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2024 Nexora. All rights reserved."
+  }
+}

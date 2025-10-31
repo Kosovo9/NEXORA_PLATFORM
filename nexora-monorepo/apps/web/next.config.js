@@ -14,8 +14,8 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/inicio', destination: '/es-MX', permanent: true },
-      { source: '/start', destination: '/en-US', permanent: true }
+      { source: '/inicio', destination: '/es', permanent: true },
+      { source: '/start', destination: '/en', permanent: true }
     ];
   },
   async headers() {
@@ -29,4 +29,5 @@ const nextConfig = {
     }];
   }
 };
+
 module.exports = nextConfig;

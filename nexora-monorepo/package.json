@@ -6,7 +6,7 @@
   "packageManager": "pnpm@8.15.4",
   "scripts": {
     "install:ci": "pnpm install --frozen-lockfile",
-    "verify": "pnpm run lint && pnpm run typecheck",
+    "verify": "pnpm run install:ci && pnpm -r --if-present lint && pnpm -r --if-present typecheck",
     "lint": "pnpm run --recursive lint",
     "typecheck": "pnpm run --recursive typecheck",
     "build": "pnpm run --recursive build",

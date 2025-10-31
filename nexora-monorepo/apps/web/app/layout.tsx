@@ -1,14 +1,32 @@
-import './globals.css'
-export const metadata = { title: 'Nexora PRO', description: 'AI Studio Todo-en-Uno' }
-export default function RootLayout({ children }: { children: React.ReactNode }){
-  return <html lang="es"><body><div className="max-w-6xl mx-auto p-4 space-y-6">
-    <header className="flex items-center justify-between">
-      <h1 className="text-xl font-semibold">Nexora — PRO</h1>
-      <nav className="flex gap-3 text-sm">
-        <a className="underline" href="/">Home</a>
-        <a className="underline" href="/studio">Studio</a>
-      </nav>
-    </header>
-    {children}
-  </div></body></html>
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Nexora - AI Content Creation Platform",
+  description: "Create amazing content with AI",
+};
+
+export default async function RootLayout({
+  children,
+  params: { locale }
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <body className={inter.className}>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
 }

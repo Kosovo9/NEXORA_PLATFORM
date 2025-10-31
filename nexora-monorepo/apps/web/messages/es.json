@@ -1,0 +1,89 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "studio": "Studio",
+    "pricing": "Precios",
+    "getStarted": "Comenzar"
+  },
+  "hero": {
+    "title": "Crea Contenido Increíble con IA",
+    "subtitle": "Transforma tus ideas en visuales y videos impresionantes usando el poder de la inteligencia artificial. Resultados profesionales en minutos, no horas.",
+    "startCreating": "Comenzar a Crear",
+    "learnMore": "Saber Más"
+  },
+  "features": {
+    "title": "¿Por qué elegir Nexora?",
+    "advancedAI": {
+      "title": "IA Avanzada",
+      "description": "Modelos de inteligencia artificial de última generación para resultados de calidad superior."
+    },
+    "secureReliable": {
+      "title": "Seguro y Confiable",
+      "description": "Seguridad de nivel empresarial con garantía de 99.9% de tiempo activo."
+    },
+    "easyToUse": {
+      "title": "Fácil de Usar",
+      "description": "Interfaz intuitiva diseñada para creadores de todos los niveles."
+    }
+  },
+  "pricing": {
+    "title": "Planes y Precios",
+    "subtitle": "Elige el plan perfecto para tus necesidades",
+    "mostPopular": "Más Popular",
+    "chooseplan": "Elegir Plan",
+    "starter": {
+      "name": "Starter",
+      "price": "$9",
+      "period": "/mes",
+      "description": "Perfecto para empezar",
+      "features": [
+        "100 imágenes IA por mes",
+        "5 videos cortos",
+        "Resolución HD",
+        "Soporte por email"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$29",
+      "period": "/mes",
+      "description": "Para profesionales",
+      "features": [
+        "500 imágenes IA por mes",
+        "25 videos HD",
+        "Resolución 4K",
+        "Acceso API",
+        "Soporte prioritario"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "$99",
+      "period": "/mes",
+      "description": "Para equipos grandes",
+      "features": [
+        "Imágenes ilimitadas",
+        "Videos ilimitados",
+        "Resolución 8K",
+        "API completa",
+        "Soporte 24/7",
+        "Integración personalizada"
+      ]
+    }
+  },
+  "footer": {
+    "product": "Producto",
+    "company": "Empresa",
+    "support": "Soporte",
+    "features": "Características",
+    "pricing": "Precios",
+    "about": "Acerca de",
+    "blog": "Blog",
+    "careers": "Carreras",
+    "help": "Centro de Ayuda",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "copyright": "© 2024 Nexora. Todos los derechos reservados."
+  }
+}
